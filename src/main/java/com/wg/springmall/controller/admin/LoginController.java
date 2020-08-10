@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller()
 @RequestMapping("/admin")
-public class AdminController {
+public class LoginController extends BaseController{
     @GetMapping("/login")
     public String login(){
         return "admin/login/login";

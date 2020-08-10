@@ -6,7 +6,7 @@ public class AdminMenu {
 
     private String icon;
 
-    private String
+   // private String
     /**
     "contentManagement": [
     {

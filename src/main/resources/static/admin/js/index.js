@@ -16,7 +16,7 @@ layui.use(['bodyTab','form','element','layer','jquery','topMenu'],function(){
 			openTabNum : "50",  //最大可打开窗口数量
 			url : "json/navs.json" //获取菜单json地址
 		});
-		topMenus = layui.topMenu({url : "/admin/menu/topMenus"});
+		topMenus = layui.topMenu({url : "menu/getTop"});
 	//通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据
 	function getData(json){
 		$.getJSON(tab.tabConfig.url,function(data){
@@ -40,27 +40,21 @@ layui.use(['bodyTab','form','element','layer','jquery','topMenu'],function(){
 		})
 	}
 	function getTopMenu(){
-		$.getJSON(topMenus.TopConfig.url,function(data){
-			console.log(data);
-			topMenus.render(data);
+		$.getJSON(topMenus.TopConfig.url,function(result){
+			//console.log(data);
+			topMenus.render(result.data);
 		})
 	}
 
+	getTopMenu();
 
+	console.log($(".topLevelMenus li,.mobileTopLevelMenus dd"));
+	//$(".topLevelMenus li,.mobileTopLevelMenus dd")[0].click();
 	//页面加载时判断左侧菜单是否显示
 	//通过顶部菜单获取左侧菜单
-	$(".topLevelMenus li,.mobileTopLevelMenus dd").click(function(){
-		if($(this).parents(".mobileTopLevelMenus").length != "0"){
-			$(".topLevelMenus li").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
-		}else{
-			$(".mobileTopLevelMenus dd").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
-		}
-		$(".layui-layout-admin").removeClass("showMenu");
-		$("body").addClass("site-mobile");
-		getData($(this).data("menu"));
-		//渲染顶部窗口
-		tab.tabMove();
-	})
+
+	//$(".topLevelMenus li,.mobileTopLevelMenus dd")[0].click();
+	//$(".topLevelMenus li,.mobileTopLevelMenus dd")[1].click();
 
 	//隐藏左侧导航
 	$(".hideMenu").click(function(){
@@ -82,6 +76,21 @@ layui.use(['bodyTab','form','element','layer','jquery','topMenu'],function(){
     $('.site-mobile-shade').on('click', function(){
 		$('body').removeClass('site-mobile');
 	});
+
+
+	$("body").on("click",".topLevelMenus li,.mobileTopLevelMenus dd",function(){
+		//如果不存在子级
+		if($(this).parents(".mobileTopLevelMenus").length != "0"){
+			$(".topLevelMenus li").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
+		}else{
+			$(".mobileTopLevelMenus dd").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
+		}
+		$(".layui-layout-admin").removeClass("showMenu");
+		$("body").addClass("site-mobile");
+		getData($(this).data("menu"));
+		//渲染顶部窗口
+		tab.tabMove();
+	})
 
 	// 添加新窗口
 	$("body").on("click",".layui-nav .layui-nav-item a:not('.mobileTopLevelMenus .layui-nav-item a')",function(){

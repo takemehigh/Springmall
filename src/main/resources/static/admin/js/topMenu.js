@@ -24,33 +24,37 @@ layui.define(["element","jquery"],function(exports){
 		$.extend(true, _this.TopConfig, option);
 		return _this;
 	}
-
-	Top.prototype.render=function(data){
-		var _this = this;
-		$(".menudl").html(createTop(data));
-		element.init();  //初始化页面元素
-		// $(window).resize(function(){
-		// 	$(".navBar").height($(window).height()-210);
-		// })
-	}
 	Top.prototype.createTop=function(data){
 		var _this = this;
 		var data;
-		if(typeof(strData) == "string"){
-			var data = JSON.parse(strData); //部分用户解析出来的是字符串，转换一下
+		var ulhtml='';
+		if(typeof(data) == "string"){
+			var data = JSON.parse(data); //部分用户解析出来的是字符串，转换一下
 		}else{
-			data = strData;
+			data = data;
 		}
 		var ulHtml = '';
 		for(var i=0;i<data.length;i++){
 			var isThis='';
 			if(i==0){
-				isThis='class="layui-this"';
+				isThis='class="layui-nav-item layui-this"';
 			}
-			ulhtml+='<dd '+isThis+' data-menu="'+data[i].code+'"><a href="javascript:;"><i class="layui-icon" data-icon="'+data[i].icon+'">'+data[i].icon+'</i><cite>'+data[i].title+'</cite></a></dd>' ;
+			else{
+				isThis='class="layui-nav-item"';
+			}
+			ulhtml+='<li '+isThis+' data-menu="'+data[i].menuCode+'" ><a href="javascript:;"><i class="layui-icon" data-icon="'+data[i].icon+'">'+data[i].icon+'</i><cite>'+data[i].title+'</cite></a></li>' ;
 		}
-		return ulHtml;
+		return ulhtml;
 	}
+	Top.prototype.render=function(data){
+		var _this = this;
+		$(".topLevelMenus").html(_this.createTop(data));
+		element.init();  //初始化页面元素
+		// $(window).resize(function(){
+		// 	$(".navBar").height($(window).height()-210);
+		// })
+	}
+
 	var topMenu = new Top();
 
 	exports("topMenu",function(option){
