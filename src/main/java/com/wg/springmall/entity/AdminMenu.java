@@ -36,7 +36,7 @@ public class AdminMenu {
         {
             "title": "登录",
                 "icon": "&#xe609;",
-                "href": "page/login/login.html",
+                "href": "page/login/menuList.html",
                 "spread": false,
                 "target": "_blank"
         }

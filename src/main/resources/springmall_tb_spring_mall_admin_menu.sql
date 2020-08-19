@@ -35,15 +35,6 @@ CREATE TABLE `tb_spring_mall_admin_menu` (
   UNIQUE KEY `title_UNIQUE` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='控制台菜单';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_spring_mall_admin_menu`
---
-
-LOCK TABLES `tb_spring_mall_admin_menu` WRITE;
-/*!40000 ALTER TABLE `tb_spring_mall_admin_menu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_spring_mall_admin_menu` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -54,4 +45,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-29 17:36:22
+-- Dump completed on 2020-08-19 17:34:32

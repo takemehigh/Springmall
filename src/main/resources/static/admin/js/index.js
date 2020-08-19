@@ -37,6 +37,11 @@ layui.use(['bodyTab','form','element','layer','jquery','topMenu'],function(){
                 //重新渲染左侧菜单
                 tab.render();
             }
+			else if(json == "menuManage"){
+				dataStr = data.menuManage;
+				//重新渲染左侧菜单
+				tab.render();
+			}
 		})
 	}
 	function getTopMenu(){

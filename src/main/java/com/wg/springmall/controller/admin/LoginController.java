@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController extends BaseController{
     @GetMapping("/login")
     public String login(){
-        return "admin/login/login";
+        return "admin/page/login/login";
     }
 
     @PostMapping("/login")
