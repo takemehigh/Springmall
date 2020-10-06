@@ -1,7 +1,7 @@
 package com.wg.springmall.service.impl;
 
-import com.wg.springmall.dao.AdminMenuMapper;
 import com.wg.springmall.entity.AdminMenu;
+import com.wg.springmall.dao.AdminMenuMapper;
 import com.wg.springmall.service.AdminMenuService;
 import com.wg.springmall.util.PageQueryUtil;
 import org.springframework.stereotype.Service;
