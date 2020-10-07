@@ -1,6 +1,13 @@
 package com.wg.springmall.controller.admin;
 
+import com.sun.javafx.collections.MappingChange;
+import com.wg.springmall.config.shiro.ShiroConfig;
+import com.wg.springmall.entity.SysUser;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +24,20 @@ public class LoginController extends BaseController{
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String userName,@RequestParam String password,@RequestParam String code){
+    public String login(ModelMap mmap, @RequestParam String userName, @RequestParam String password, @RequestParam String code, ModelMap resultmap ){
         System.out.println(userName+" "+password+" "+code);
-        return "redirect:/admin/index";
+        UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+        Subject subject = SecurityUtils.getSubject();
+        try{
+            subject.login(token);
+            resultmap.put("user",(SysUser)subject.getPrincipal());
+            return "redirect:/admin/index";
+        }
+        catch (Exception e){
+            mmap.put("errmsg",e.getMessage());
+            return "admin/page/login/login";
+        }
+
     }
 
     @GetMapping({"/main", "/main.html"})

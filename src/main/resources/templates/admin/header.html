@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="header-fragment">
+<head th:fragment="header-fragment(title)">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>newbee-mall | 后台管理系统</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-<!--    <link rel="shortcut icon" th:href="@{/admin/dist/img/favicon.ico}"/>
-    <link rel="stylesheet" th:href="@{/admin/dist/css/font-awesome.min.css}">
-    &lt;!&ndash; Ionicons &ndash;&gt;
-    <link rel="stylesheet" th:href="@{/admin/dist/css/ionicons.min.css}">
-    <link rel="stylesheet" th:href="@{/admin/dist/css/main.css}">
-    <link rel="stylesheet" th:href="@{/admin/plugins/bootstrap/css/bootstrap.css}"/>
-    <link rel="stylesheet" th:href="@{/admin/plugins/sweetalert/sweetalert.css}"/>
-    <link rel="stylesheet" th:href="@{/admin/plugins/jqgrid-5.3.0/ui.jqgrid-bootstrap4.css}"/>-->
-    <!-- Theme style -->
-    <link rel="stylesheet" th:href="@{/static/admin/layui/css/layui.css}">
+    <title th:text="${title}"></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" th:href="@{layui/css/layui.css}" media="all" />
+    <script type="text/javascript" th:src="@{layui/layui.js}"></script>
+    <link rel="stylesheet" th:href="@{layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{css/index.css}" media="all" />
+    <link rel="stylesheet" th:href="@{css/public.css}" media="all" />
 </head>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom" th:fragment="header-nav">
